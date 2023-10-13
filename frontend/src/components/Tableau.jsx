@@ -19,6 +19,15 @@ export default function Tableau () {
         setWeekDays(getDaysOfWeek(today))
     }, [today])
     
+    const livraisons = [
+        {
+            destination: "",
+            taille: "",
+            status: "",
+            ref: "",
+            date: "",
+        }
+    ]
 
     return <div id="tableau">
         <div className="tab">
