@@ -2,13 +2,20 @@
   font-family: 'Courier New', Courier, monospace;  
 }
 
-#tableau, .tab {
-  height: 100vh;
+#tableau {
+  max-height: 80vh;
+  max-width: 80vw;
+}
+.tab {
+  height: 100%;
+}
+.theader {
+  height: 5%;
 }
 .tbody {
   display: grid;
-  height: 100%;
-  grid-template-rows: repeat(5, 1fr);
+  height: 95%;
+  grid-template-rows: repeat(5, 20%);
   overflow-x: scroll;
 }
 .tr {
