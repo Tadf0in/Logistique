@@ -1,12 +1,12 @@
-export default function Td ({ destination, taille, status, reference}) {
+export default function Td ({ data }) {
 
     return <div className="td"  onClick={() => console.log("clicked")}>
-        <p>{destination}</p>
-        <p>{taille}</p>
+        <p>{data.destination}</p>
+        <p>{data.taille}</p>
         <p style={{
-            color: (status === 'B') ? "red" : (status === 'D') ? "green" : "black",
+            color: (data.status === 'B') ? "red" : (data.status === 'D') ? "green" : "black",
             fontSize: '25px'
-        }}>{status}</p>
-        <p>{reference}</p>
+        }}>{data.status}</p>
+        <p>{data.reference}</p>
     </div>
 }

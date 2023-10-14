@@ -4,7 +4,7 @@ import Theader from "./Theader";
 
 export default function Table () {
     const [today, setToday] = useState(new Date())
-    const [weekDays, setWeekDays] = useState([])
+    const [weekDays, setWeekDays] = useState()
 
     const getDaysOfWeek = (day) => {
         let monday = new Date(day.setDate(day.getDate() - day.getDay() + (day.getDay() === 0 ? -6 : 1)))
@@ -16,13 +16,12 @@ export default function Table () {
     }
     useEffect(() => {
         setWeekDays(getDaysOfWeek(today))
-        console.log(today)
     }, [today])
 
     return <div id="tableau">
         <div className="tab">
             <Theader setToday={setToday}/>
-            <Tbody weekDays={weekDays}/>
+            { weekDays && <Tbody weekDays={weekDays}/>}
         </div>
     </div>
 }

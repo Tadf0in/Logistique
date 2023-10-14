@@ -6,7 +6,6 @@ export default function useFetch (url, options, dependencies) {
     const [errors, setErrors] = useState(null)
 
     useEffect(() => {
-        console.log('fetch')
         fetch('http://localhost:8000' + url, {
             ...options,
             headers: {
