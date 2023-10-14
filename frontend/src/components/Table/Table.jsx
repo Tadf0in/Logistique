@@ -7,10 +7,11 @@ export default function Table () {
     const [weekDays, setWeekDays] = useState()
 
     const getDaysOfWeek = (day) => {
-        let monday = new Date(day.setDate(day.getDate() - day.getDay() + (day.getDay() === 0 ? -6 : 1)))
+        let monday = new Date(day)
+        monday = new Date(monday.setDate(day.getDate() - day.getDay() + (day.getDay() === 0 ? -6 : 1)))
         let week = []
         for (let i=0; i<5; i++) {
-            week.push(new Date(day.setDate(monday.getDate() + i)))
+            week.push(new Date(monday.getFullYear(), monday.getMonth(), monday.getDate() + i))
         }
         return week
     }
@@ -20,7 +21,7 @@ export default function Table () {
 
     return <div id="tableau">
         <div className="tab">
-            <Theader setToday={setToday}/>
+            <Theader today={today} setToday={setToday}/>
             { weekDays && <Tbody weekDays={weekDays}/>}
         </div>
     </div>

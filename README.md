@@ -2,7 +2,11 @@
 
 ## Avancées
 
-* **14/04**
+* **14/04** &nbsp; *Récupère les infos*
+
+    * Récupère les infos de livraison dans la BDD via l'api
+    * Affiche les livraisons selon le jour dans le tableau
+    * Correction de bugs au niveau du changement de semaine
 
 * **13/03** &nbsp; *Création du tableau* 
 

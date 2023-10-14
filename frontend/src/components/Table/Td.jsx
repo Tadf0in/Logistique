@@ -7,6 +7,6 @@ export default function Td ({ data }) {
             color: (data.status === 'B') ? "red" : (data.status === 'D') ? "green" : "black",
             fontSize: '25px'
         }}>{data.status}</p>
-        <p>{data.reference}</p>
+        <p>{data.ref}</p>
     </div>
 }
