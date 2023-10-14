@@ -1,6 +1,6 @@
-import Case from "./Case";
+import Td from "./Td";
 
-export default function Row ({ jour, date}) {
+export default function Tr ({ jour, date}) {
 
     return <div className="tr">
         <div className="th">

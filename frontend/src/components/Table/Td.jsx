@@ -1,4 +1,4 @@
-export default function Case ({ destination, taille, status, reference}) {
+export default function Td ({ destination, taille, status, reference}) {
 
     return <div className="td"  onClick={() => console.log("clicked")}>
         <p>{destination}</p>
