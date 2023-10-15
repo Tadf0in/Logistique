@@ -1,4 +1,5 @@
 import useFetch from "../../hooks/useFetch";
+import Thead from "./Thead";
 import Tr from "./Tr";
 
 export default function Tbody ({weekDays}) {
@@ -10,9 +11,10 @@ export default function Tbody ({weekDays}) {
     const dayLetters = ['L', 'M', 'M', 'J', 'V']
 
     return <div className="tbody">
+        <Thead />
         { loading && <>Loading ...</>}
         { data &&
-            weekDays.map((destination, i) => 
+            weekDays.map((day, i) => 
                 <Tr 
                     jour={dayLetters[i]} 
                     date={weekDays[i]} 
