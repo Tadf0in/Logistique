@@ -16,5 +16,6 @@ export default function Tr ({ jour, date, livraisons }) {
                 <Td data={data} key={i}/>
             )
         }
+        <Td empty={true}/>
     </div>
 }
