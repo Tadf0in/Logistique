@@ -33,16 +33,16 @@
 
 #### BDD :
 
-||           **Livraison**            ||
-|:------------|---------:|:-----------:|
-| **nom**     | **type** | **options** |
-| id          | int      | PK          |
-| destination | char     |             |
-| taille      | char     |             |
-| status      | char     |             |
-| ref         | char     |             |
+||             **Livraison**               ||
+|:------------|---------:|:----------------:|
+| **nom**     | **type** | **options**      |
+| id          | int      | PK               |
+| destination | int      | FK > Destination |
+| taille      | char     |                  |
+| status      | char     |                  |
+| ref         | char     |                  |
 
-||           **Destination**            ||
+||         **Destination**         ||
 |:---------|---------:|:-----------:|
 | **nom**  | **type** | **options** |
 | id       | int      | PK          |
