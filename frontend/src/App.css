@@ -1,5 +1,7 @@
 :root {
   --border: solid 1px #ddd;
+  --color-1: #3B69B4;
+  --color-2: #4BB3D8;
 }
 * {
   /* font-family: 'Courier New', Courier, monospace;   */
@@ -20,18 +22,36 @@
   height: 10%;
   font-size: 20px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
+  gap: 20px;
 }
 .theader button {
-  background-color: transparent;
+  background: linear-gradient(90deg, var(--color-1), var(--color-2));
+  padding: 7px 20px;
+  border-radius: 50px;
   border: none;
+  color: white;
   font-size: 20px;
   cursor: pointer;
 }
+.theader button:hover {
+  background: var(--color-1);
+}
+.theader span {
+  display: flex;
+  gap: 2px;
+}
+.theader .left {
+  border-radius: 50px 0 0 50px;
+}
+.theader .right {
+  background: linear-gradient(-90deg, var(--color-1), var(--color-2));
+  border-radius: 0 50px 50px 0;
+}
 .tbody {
   border: solid 3px black;
-  border-radius: 5px;
+  border-radius: 10px;
   display: grid;
   height: 90%;
   grid-template-rows: repeat(5, 1fr);

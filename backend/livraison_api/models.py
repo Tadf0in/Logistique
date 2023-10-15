@@ -9,3 +9,11 @@ class Livraison(models.Model):
 
     def __str__(self) -> str:
         return self.destination + ' - ' + str(self.date)
+    
+
+class Destination(models.Model):
+    lieu = models.CharField(max_length=50)
+    favorite = models.BooleanField(verbose_name='Favoris')
+
+    def __str__(self) -> str:
+        return self.lieu

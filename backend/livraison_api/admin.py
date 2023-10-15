@@ -9,3 +9,11 @@ class LivraisonAdmin(admin.ModelAdmin):
 
     def name(self, livraison):
         return str(livraison)
+    
+
+@admin.register(Destination)
+class DestinationAdmin(admin.ModelAdmin):
+    list_display = ('lieu', 'favorite')
+    list_filter = ('favorite',)
+    list_editable = ('favorite',)
+    search_fields = ('lieu',)
