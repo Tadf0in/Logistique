@@ -1,6 +1,6 @@
 import Td from "./Td";
 
-export default function Tr ({ jour, date, livraisons }) {
+export default function Tr ({ jour, date, livraisons, favoris }) {
     const isSameDay = (day1, day2) => 
         day1.getFullYear() === day2.getFullYear() && 
         day1.getMonth() ===  day2.getMonth() && 
@@ -11,10 +11,19 @@ export default function Tr ({ jour, date, livraisons }) {
             <p>{jour}</p>
             <p>{("0" + date.getDate()).slice(-2)}</p>
         </div>
+        {   
+            favoris.map((destination, i) => {
+                livraisons.filter((livraison) => livraison.destination.lieu === destination.lieu).map((livraison, i) => {
+                    console.log('fav',livraison)
+                    return <Td data={livraison} key={'fav-'+i}/>
+                })
+            })
+        }
         {
-            livraisons.map((data, i) => 
-                <Td data={data} key={i}/>
-            )
+            livraisons.filter((livraison) => !livraison.destination.favorite).map((livraison, i) => {
+                console.log('pasfav',livraison)
+                return <Td data={livraison} key={i}/>
+            })
         }
         <Td empty={true}/>
     </div>

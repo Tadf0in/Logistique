@@ -5,11 +5,12 @@ export default function Td ({ data={}, empty=false }) {
         console.log(e)
     }
 
+    console.log(data)
     return <>
         { empty ? <div className="td" onClick={(e) => newLivraison(e) }></div> :
         
         <div className="td">
-            <p>{ !data.destination.favorite && data.destination.lieu}</p>
+            { !data.destination.favorite && <p>data.destination.lieu</p> }
             <p>{data.taille}</p>
             <p style={{color: (data.status === 'B') ? "red" : (data.status === 'D') ? "green" : "black",}}>
                 {data.status}</p>

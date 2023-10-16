@@ -4,14 +4,17 @@ from .serializers import *
 
 class LivraisonsView(APIView):
     def get(self, request):
-        livraisons = Livraison.objects.filter(date__range=[request.GET['start'], request.GET['end']])
+        livraisons = Livraison.objects.filter(date__range=[request.GET['start'], request.GET['end']]).order_by('destination__lieu')
         serializer = LivraisonSerializer(livraisons, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
     
 
 class DestinationsView(APIView):
     def get(self, request):
-        destinations = Destination.objects.order_by('lieu')
+        if 'favorite' in request.GET:
+            destinations = Destination.objects.filter(favorite=True).order_by('lieu')
+        else:
+            destinations = Destination.objects.order_by('lieu')
         serializer = DestinationSerializer(destinations, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
