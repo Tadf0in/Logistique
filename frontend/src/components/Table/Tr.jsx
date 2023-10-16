@@ -12,18 +12,14 @@ export default function Tr ({ jour, date, livraisons, favoris }) {
             <p>{("0" + date.getDate()).slice(-2)}</p>
         </div>
         {   
-            favoris.map((destination, i) => {
-                livraisons.filter((livraison) => livraison.destination.lieu === destination.lieu).map((livraison, i) => {
-                    console.log('fav',livraison)
-                    return <Td data={livraison} key={'fav-'+i}/>
-                })
-            })
+            favoris.map((destination, i) => 
+                <Td data={livraisons.filter((livraison) => livraison.destination.lieu === destination.lieu)} key={'fav-'+i}/>
+            )
         }
         {
-            livraisons.filter((livraison) => !livraison.destination.favorite).map((livraison, i) => {
-                console.log('pasfav',livraison)
-                return <Td data={livraison} key={i}/>
-            })
+            livraisons.filter((livraison) => !livraison.destination.favorite).map((livraison, i) => 
+                <Td data={livraison} key={i}/>
+            )
         }
         <Td empty={true}/>
     </div>
