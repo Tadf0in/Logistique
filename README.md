@@ -2,6 +2,13 @@
 
 ## Avancées
 
+* **16/10** &nbsp; *Affichage du tableau fonctionnel et terminé*
+
+    * Favoris à gauche puis mélangé
+    * Cases vides
+    * Favoris sutomisables
+    * https://www.youtube.com/watch?v=-TzQGCfLycg
+
 * **15/10** &nbsp; *Liste des destinations*
 
     * Liste des destinations gérées dans la BDD (voir [conception](#conception))

@@ -7,7 +7,7 @@ export default function Tr ({ jour, date, livraisons, favoris }) {
         day1.getDate() === day2.getDate()
 
     return <div className="tr">
-        <div className="th" style={{backgroundColor:(isSameDay(date, new Date())) ? '#ffe0e0' : '#f3f3f3'}}>
+        <div className="th" style={{backgroundColor:(isSameDay(date, new Date())) ? '#ffe0e0' : ''}}>
             <p>{jour}</p>
             <p>{("0" + date.getDate()).slice(-2)}</p>
         </div>
