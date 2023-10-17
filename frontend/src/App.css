@@ -1,5 +1,17 @@
 :root {
   --border: solid 1px #ddd;
+  --color-1: #3B69B4;
+  --color-2: #4BB3D8;
+  --first-column-color: #f3f3f3;
+  --first-row-color: #f2f2f2;
+  --cell-color: white;
+  --cell-hover-color: #fcfcfc;
+
+  --first-column-width: 5vh;
+  --first-row-height: 5vh;
+  --cell-width: 15vh;
+  --td-font-size: 2vh;
+  --th-font-size: 2.5vh;
 }
 * {
   /* font-family: 'Courier New', Courier, monospace;   */
@@ -7,8 +19,8 @@
 }
 
 #tableau {
-  height: 80vh;
-  width: 80vw;
+  height: 90vh;
+  width: 100%;
 }
 .tab {
   height: 100%;
@@ -20,46 +32,71 @@
   height: 10%;
   font-size: 20px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
+  gap: 20px;
 }
 .theader button {
-  background-color: transparent;
+  background: linear-gradient(90deg, var(--color-1), var(--color-2));
+  padding: 7px 20px;
+  border-radius: 50px;
   border: none;
-  font-size: 20px;
+  color: white;
+  font-size: 2vh;
   cursor: pointer;
 }
+.theader button:hover {
+  background: var(--color-1);
+}
+.theader span {
+  display: flex;
+  gap: 2px;
+}
+.theader .left {
+  border-radius: 50px 0 0 50px;
+}
+.theader .right {
+  background: linear-gradient(-90deg, var(--color-1), var(--color-2));
+  border-radius: 0 50px 50px 0;
+}
 .tbody {
+  background-color: var(--cell-color);
   border: solid 3px black;
-  border-radius: 5px;
+  border-radius: 10px;
   display: grid;
   height: 90%;
-  grid-template-rows: repeat(5, 1fr);
+  grid-template-rows: var(--first-row-height) repeat(5, calc((100% - var(--first-row-height)) / 5));
   overflow-x: scroll;
 }
 .tr {
-  border-bottom: var(--border);
+  border-top: var(--border);
   display: flex;
 }
 .th {
   border-right: var(--border);
-  background-color: #f3f3f3;
-  width: 100px;
+  background-color: var(--first-column-color);
+  width: var(--first-column-width);
   font-weight: bold;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+  position: sticky;
+  left: 0;
 }
 .th p {
-  font-size: 2.8vh;
+  font-size: var(--th-font-size);
   margin: 0;
+}
+.thead {
+  margin-left: var(--first-column-width);
+  border-left: var(--border);
+  background-color: var(--first-row-color);
 }
 .td {
   border-right: var(--border);
 
-  width: 150px;
-  height: 100%;
+  width: var(--cell-width);
   
   display: flex;
   flex-direction: column;
@@ -68,7 +105,7 @@
 }
 .td p {
   max-width: 80%;
-  font-size: 2vh;
+  font-size: var(--td-font-size);
   margin: 2px;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -76,7 +113,7 @@
 }
 
 .td:hover {
-  background-color: #fcfcfc;
+  background-color: var(--cell-hover-color);
   cursor: pointer;
 }
 .td p:hover {

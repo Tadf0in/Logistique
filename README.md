@@ -1,6 +1,19 @@
-# <center>Documentation</center>
+# <div align="center">Documentation</div>
 
 ## Avancées
+
+* **16/10** &nbsp; *Affichage du tableau fonctionnel et terminé*
+
+    * Favoris à gauche puis mélangé
+    * Cases vides
+    * Favoris sutomisables
+    * https://www.youtube.com/watch?v=-TzQGCfLycg
+
+* **15/10** &nbsp; *Liste des destinations*
+
+    * Liste des destinations gérées dans la BDD (voir [conception](#conception))
+    * GET */api/livraisons/destinations*
+    * POST */api/livraisons/destinations/update*
 
 * **14/10** &nbsp; *Récupère les infos*
 
@@ -13,7 +26,7 @@
     * Tableau sous forme de grille
     * Récupère automatiquement les 5 jours de la semaine
     * Flèches pour changer de semaine
-    * */api/livraisons/?start=YYYY-MM-DD&end=YYYY-MM-DD*
+    * GET */api/livraisons/?start=YYYY-MM-DD&end=YYYY-MM-DD*
 
 * **12/10** &nbsp; *Initialisation du projet*
 
@@ -27,11 +40,18 @@
 
 #### BDD :
 
-||           **Livraison**            ||
-|:------------|---------:|:-----------:|
-| **nom**     | **type** | **options** |
-| id          | int      | PK          |
-| destination | char     |             |
-| taille      | char     |             |
-| status      | char     |             |
-| ref         | char     |             |
+||             **Livraison**               ||
+|:------------|---------:|:----------------:|
+| **nom**     | **type** | **options**      |
+| id          | int      | PK               |
+| destination | int      | FK > Destination |
+| taille      | char     |                  |
+| status      | char     |                  |
+| ref         | char     |                  |
+
+||         **Destination**         ||
+|:---------|---------:|:-----------:|
+| **nom**  | **type** | **options** |
+| id       | int      | PK          |
+| lieu     | char     |             |
+| favorite | bool     |             |
