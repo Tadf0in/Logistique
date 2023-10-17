@@ -13,12 +13,21 @@ export default function Tr ({ jour, date, livraisons, favoris }) {
         </div>
         {   
             favoris.map((destination, i) => 
-                <Td data={livraisons.filter((livraison) => livraison.destination.lieu === destination.lieu)} key={'fav-'+i}/>
+                <Td 
+                    data={livraisons.filter((livraison) => livraison.destination.lieu === destination.lieu)} 
+                    destination={destination}
+                    date={date}
+                    key={'fav-'+i}
+                />
             )
         }
         {
             livraisons.filter((livraison) => !livraison.destination.favorite).map((livraison, i) => 
-                <Td data={livraison} key={i}/>
+                <Td 
+                    data={livraison} 
+                    date={date}
+                    key={i}
+                />
             )
         }
         <Td empty={true}/>

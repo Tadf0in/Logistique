@@ -2,6 +2,11 @@
 
 ## Avancées
 
+* **17/10** &nbsp; *Formulaire pour ajouter*
+
+    * Affichage du forulaire quand clique sur une case
+    * Destination et date récupérées automatiquements
+
 * **16/10** &nbsp; *Affichage du tableau fonctionnel et terminé*
 
     * Favoris à gauche puis mélangé
