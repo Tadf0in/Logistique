@@ -26,10 +26,11 @@ export default function Tr ({ jour, date, livraisons, favoris }) {
                 <Td 
                     data={livraison} 
                     date={date}
+                    destination=''
                     key={i}
                 />
             )
         }
-        <Td empty={true}/>
+        <Td date={date} destination=''/>
     </div>
 }

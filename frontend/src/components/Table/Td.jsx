@@ -12,6 +12,7 @@ export default function Td ({ data={}, date, destination }) {
     if (Array.isArray(data)) {
         if (data.length === 1) { data = data[0]}
         else if (data.length > 1) {
+            data = data[0]
             // Many in one cell
         }
     }

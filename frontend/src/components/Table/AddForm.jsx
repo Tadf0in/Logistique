@@ -27,7 +27,10 @@ export default function AddForm ({ close, date, destination }) {
                 'Content-type': 'application/json'
             }
         })
-        .then((res) => console.log(res))
+        .then((res) => {
+            console.log(res)
+            close()
+        })
         .catch((err) => console.log(err))
     }
 
@@ -36,14 +39,14 @@ export default function AddForm ({ close, date, destination }) {
     }
 
     return <div id="addform">
-        <button className="close" onClick={() => close()}>X</button>
+        <button className="close" onClick={() => close()}>×</button>
         <form onSubmit={(e) => submitNewLivraison(e)}>
             <Input type='text' placeholder='Destination' name='destination' get={formData[['destination']].lieu} set={valueChange}/>
-            <Input type='text' placeholder='Status' name='status' get={formData[['status']]} set={valueChange}/>
-            <Input type='text' placeholder='Taille' name='taille' get={formData[['taill']]} set={valueChange}/>
-            <Input type='text' placeholder='Ref' name='ref' get={formData[['ref']]} set={valueChange}/>
             <Input type='date' placeholder='Date' name='date' get={formData[['date']]} set={valueChange}/>
-            <button type="submit">Ajouter</button>
+            <Input type='text' placeholder='Taille' name='taille' get={formData[['taille']]} set={valueChange}/>
+            <Input type='text' placeholder='Status' name='status' get={formData[['status']]} set={valueChange}/>
+            <Input type='text' placeholder='Ref' name='ref' get={formData[['ref']]} set={valueChange}/>
+            <button type="submit" className="add">Ajouter</button>
         </form>
     </div> 
 }

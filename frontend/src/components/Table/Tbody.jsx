@@ -11,7 +11,7 @@ export default function Tbody ({weekDays}) {
     
     const dayLetters = ['L', 'M', 'M', 'J', 'V']
 
-    return <div className="tbody">
+    return <div className="tbody" id="tbody" onWheel={(e) => document.getElementById('tbody').scrollLeft += e.deltaY/8}>
         { livraisonsLoading && <>Loading ...</> }
         
         { favoritesData && <Thead data={favoritesData}/> } 
