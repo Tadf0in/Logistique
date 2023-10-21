@@ -2,9 +2,18 @@
 
 ## Avancées
 
+* **20/10** &nbsp; *Actualisation automatique*
+
+    * Rafraîchit automatiquement les nouvelles livraisons sur un interval définit
+    * Style du formulaire
+
+* **19/10** &nbsp; *Fomulaire fonctionnel*
+
+    * Formulaire ajoute dans la BDD
+
 * **17/10** &nbsp; *Formulaire pour ajouter*
 
-    * Affichage du forulaire quand clique sur une case
+    * Affichage du formulaire quand clique sur une case
     * Destination et date récupérées automatiquements
 
 * **16/10** &nbsp; *Affichage du tableau fonctionnel et terminé*
