@@ -2,6 +2,11 @@
 
 ## Avancées
 
+* **21/10** &nbsp; *Optimisation des requêtes*
+
+    * Un seule requête (*/api/all*) pour toutes les données d'un coup
+    * fonction apiFetch gère GET et POST
+
 * **20/10** &nbsp; *Actualisation automatique*
 
     * Rafraîchit automatiquement les nouvelles livraisons sur un interval définit
