@@ -53,3 +53,12 @@ class UpdateDestinations(APIView):
                     new_destination.favorite = False
                     new_destination.save()
         return Response(status=status.HTTP_201_CREATED)
+    
+
+class GetAll(APIView):
+    def get(self, request):
+        return Response({
+            'destinations': DestinationsView().get(request).data,
+            'livraisons' : LivraisonsView().get(request).data
+        }, status=status.HTTP_200_OK)
+        

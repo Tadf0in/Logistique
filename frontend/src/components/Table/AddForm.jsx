@@ -1,5 +1,6 @@
 import { useState } from "react"
 import Input from "../../utils/Fields"
+import apiFetch from "../../utils/apiFetch"
 
 export default function AddForm ({ close, date, destination }) {
     const formatDate = (date) => {
@@ -20,18 +21,14 @@ export default function AddForm ({ close, date, destination }) {
         console.log(formData)
         console.log(JSON.stringify(formData))
 
-        await fetch('http://localhost:8000/api/livraisons/', {
+        await apiFetch('/api/livraisons/', {
             method: 'POST',
             body: JSON.stringify(formData),
             headers: {
                 'Content-type': 'application/json'
             }
         })
-        .then((res) => {
-            console.log(res)
-            close()
-        })
-        .catch((err) => console.log(err))
+        close()
     }
 
     const valueChange = (name, value) => {
