@@ -1,24 +1,22 @@
 import { useState } from "react"
-import Input from "../../utils/Fields"
+import Input, { Select } from "../../utils/Fields"
 import apiFetch from "../../utils/apiFetch"
 
-export default function AddForm ({ close, date, destination }) {
+export default function AddForm ({ close, date, destination, listDestinations }) {
     const formatDate = (date) => {
         return date.getFullYear() + '-' + ("0" + (date.getMonth() + 1)).slice(-2) + '-' +("0" + date.getDate()).slice(-2)
     }
 
     const [formData, setFormData] = useState({
-        destination: destination,
-        taille: '',
-        status: '',
+        destination: destination.lieu,
+        taille: 'FTL',
+        status: 'B',
         ref: '',
         date: formatDate(date)
     })
 
     const submitNewLivraison = async (e) => {
         e.preventDefault()
-        console.log(e)
-        console.log(formData)
         console.log(JSON.stringify(formData))
 
         await apiFetch('/api/livraisons/', {
@@ -38,10 +36,16 @@ export default function AddForm ({ close, date, destination }) {
     return <div id="addform">
         <button className="close" onClick={() => close()}>×</button>
         <form onSubmit={(e) => submitNewLivraison(e)}>
-            <Input type='text' placeholder='Destination' name='destination' get={formData[['destination']].lieu} set={valueChange}/>
+            <select name="destination" onChange={(e) => valueChange('destination', e.target.value)}>
+                { Object.values(listDestinations).map((d, i) => {
+                    return <option value={d.lieu} key={i} selected={d === destination}>{d.lieu}</option>    
+                }
+                )}
+                <option value=""></option>
+            </select>
             <Input type='date' placeholder='Date' name='date' get={formData[['date']]} set={valueChange}/>
-            <Input type='text' placeholder='Taille' name='taille' get={formData[['taille']]} set={valueChange}/>
-            <Input type='text' placeholder='Status' name='status' get={formData[['status']]} set={valueChange}/>
+            <Select name='taille' get={formData[['taille']]} set={valueChange} options={['FTL', '3L/M', '6L/M']}/>
+            <Select name='status' get={formData[['status']]} set={valueChange} options={['B', 'D']}/>
             <Input type='text' placeholder='Ref' name='ref' get={formData[['ref']]} set={valueChange}/>
             <button type="submit" className="add">Ajouter</button>
         </form>

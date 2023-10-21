@@ -12,7 +12,6 @@ class LivraisonSerializer(serializers.ModelSerializer):
     destination = DestinationSerializer()
 
     def create(self, data):
-        print('create')
         data['destination'] = Destination.objects.get(pk=data['destination']['id'])
         new_livraison = Livraison(**data)
         new_livraison.save()

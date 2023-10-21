@@ -12,19 +12,13 @@ class LivraisonsView(APIView):
         return Response(serializer.data, status=status.HTTP_200_OK)
     
     def post(self, request):
-        """
-        { 
-            "destination":{
-                "id":"2",
-                "lieu":"Itupeva",
-                "favorite":"False"
-            }, 
-            "taille":"taille", 
-            "status":"st", 
-            "ref":"156", 
-            "date":"2023-10-01" 
-        }
-        """
+        data = request.data
+        destination, new_destination = Destination.objects.get_or_create(lieu=data['destination']) 
+        if destination:
+            data['destination'] = destination.__dict__
+        else:
+            data['destination'] = new_destination.__dict__
+
         serializer = LivraisonSerializer(data=request.data)
         if serializer.is_valid(raise_exception=True):
             livraison = serializer.create(request.data)

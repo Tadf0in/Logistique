@@ -1,7 +1,7 @@
 import { useState } from "react"
 import AddForm from "./AddForm"
 
-export default function Td ({ data={}, date, destination }) {
+export default function Td ({ data={}, date, destination, listDestinations }) {
     const [adding, setAdding] = useState(false)
     const rempli = Object.keys(data).length > 0
 
@@ -29,7 +29,7 @@ export default function Td ({ data={}, date, destination }) {
         </> 
         }  
 
-        { adding && <AddForm close={setAddingFalse} date={date} destination={destination}/> }
+        { adding && <AddForm close={setAddingFalse} date={date} destination={destination} listDestinations={listDestinations}/> }
 
     </div>
 }

@@ -2,7 +2,7 @@ from django.db import models
 
 class Destination(models.Model):
     lieu = models.CharField(max_length=50)
-    favorite = models.BooleanField(verbose_name='Favoris')
+    favorite = models.BooleanField(verbose_name='Favoris', default=False)
 
     def __str__(self) -> str:
         return self.lieu

@@ -46,6 +46,7 @@ export default function Tbody ({weekDays}) {
                     date={weekDays[i]} 
                     livraisons={livraisonsData.filter((livraison) => livraison.date === formatDay(weekDays[i]))}
                     favoris={favoritesData}
+                    listDestinations={destinationsData}
                     key={i}
                 />
             )}

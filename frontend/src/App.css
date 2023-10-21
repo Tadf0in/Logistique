@@ -159,13 +159,14 @@
   display: flex;
   flex-direction: column;
 }
-#addform input {
+#addform input,#addform select {
+  background-color: transparent;
   padding: 2px 5px;
   border: solid 1px #aaa;
   border-bottom: 0;
   font-size: var(--td-font-size);
 }
-#addform input:first-child {
+#addform select:nth-child(1) {
   border-radius: 5px 5px 0 0;
 }
 #addform input:nth-last-child(2) {

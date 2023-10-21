@@ -2,6 +2,11 @@
 
 ## Avancées
 
+* **22/10** &nbsp; *Listes déroulantes*
+
+    * Select dans addform
+    * back get_or_create destination quand nouvelle livraison
+
 * **21/10** &nbsp; *Optimisation des requêtes*
 
     * Un seule requête (*/api/all*) pour toutes les données d'un coup
