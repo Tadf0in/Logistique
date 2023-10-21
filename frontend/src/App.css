@@ -120,3 +120,68 @@
   overflow: visible;
   text-overflow: unset;
 }
+
+
+#addform {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+
+  border: solid 2px black;
+  border-radius: 10px;
+  padding: 5px;
+  background-color: white;
+  box-shadow: 0 0 5px black;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+#addform .close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  width: 20px;
+  height: 20px;
+  font-size: 15px;
+  background-color: red;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+#addform .close:hover {
+  background-color: rgb(181, 0, 0);
+}
+#addform form {
+  display: flex;
+  flex-direction: column;
+}
+#addform input,#addform select {
+  background-color: transparent;
+  padding: 2px 5px;
+  border: solid 1px #aaa;
+  border-bottom: 0;
+  font-size: var(--td-font-size);
+}
+#addform select:nth-child(1) {
+  border-radius: 5px 5px 0 0;
+}
+#addform input:nth-last-child(2) {
+  border-radius: 0 0 5px 5px;
+  border-bottom: solid 1px #aaa;
+}
+#addform .add {
+  font-size: var(--th-font-size);
+  margin-top: 5px;
+  background: linear-gradient(-90deg, var(--color-1), var(--color-2));
+  color: white;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+}
+#addform .add:hover {
+  background: var(--color-1);
+}

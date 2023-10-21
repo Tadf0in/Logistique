@@ -4,10 +4,28 @@ from .serializers import *
 
 class LivraisonsView(APIView):
     def get(self, request):
-        livraisons = Livraison.objects.filter(date__range=[request.GET['start'], request.GET['end']]).order_by('destination__lieu')
+        if 'start' in request.GET and 'end' in request.GET:
+            livraisons = Livraison.objects.filter(date__range=[request.GET['start'], request.GET['end']]).order_by('destination__lieu')
+        else:
+            livraisons = Livraison.objects.all().order_by('destination__lieu')
         serializer = LivraisonSerializer(livraisons, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
     
+    def post(self, request):
+        data = request.data
+        destination, new_destination = Destination.objects.get_or_create(lieu=data['destination']) 
+        if destination:
+            data['destination'] = destination.__dict__
+        else:
+            data['destination'] = new_destination.__dict__
+
+        serializer = LivraisonSerializer(data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            livraison = serializer.create(request.data)
+            if livraison is not None:
+                return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+
 
 class DestinationsView(APIView):
     def get(self, request):
@@ -29,3 +47,12 @@ class UpdateDestinations(APIView):
                     new_destination.favorite = False
                     new_destination.save()
         return Response(status=status.HTTP_201_CREATED)
+    
+
+class GetAll(APIView):
+    def get(self, request):
+        return Response({
+            'destinations': DestinationsView().get(request).data,
+            'livraisons' : LivraisonsView().get(request).data
+        }, status=status.HTTP_200_OK)
+        

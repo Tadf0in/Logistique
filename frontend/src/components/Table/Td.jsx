@@ -1,27 +1,35 @@
-export default function Td ({ data={} }) {
+import { useState } from "react"
+import AddForm from "./AddForm"
 
-    const newLivraison = (e) => {
-        console.log("clicked")
-        console.log(e)
+export default function Td ({ data={}, date, destination, listDestinations }) {
+    const [adding, setAdding] = useState(false)
+    const rempli = Object.keys(data).length > 0
+
+    const setAddingFalse = () => {
+        setAdding(false)
     }
 
     if (Array.isArray(data)) {
         if (data.length === 1) { data = data[0]}
         else if (data.length > 1) {
+            data = data[0]
             // Many in one cell
         }
     }
 
-    return <>
-        { Object.keys(data).length === 0 ? <div className="td" onClick={(e) => newLivraison(e) }></div> 
-        :
-        <div className="td">
-                { !data.destination.favorite && <p>{data.destination.lieu}</p> }
-                <p>{data.taille}</p>
-                <p style={{color: (data.status === 'B') ? "red" : (data.status === 'D') ? "green" : "black",}}>
-                    {data.status}</p>
-                <p>{data.ref}</p>
-        </div>
+    return <div className="td" onClick={() => {if (!adding) {setAdding(true)}}}>
+
+        { rempli > 0 && 
+        <>
+            { !data.destination.favorite && <p>{data.destination.lieu}</p> }
+            <p>{data.taille}</p>
+            <p style={{color: (data.status === 'B') ? "red" : (data.status === 'D') ? "green" : "black",}}>
+                {data.status}</p>
+            <p>{data.ref}</p>
+        </> 
         }  
-    </>  
+
+        { adding && <AddForm close={setAddingFalse} date={date} destination={destination} listDestinations={listDestinations}/> }
+
+    </div>
 }

@@ -2,6 +2,30 @@
 
 ## Avancées
 
+* **22/10** &nbsp; *Listes déroulantes*
+
+    * Select dans addform
+    * back get_or_create destination quand nouvelle livraison
+
+* **21/10** &nbsp; *Optimisation des requêtes*
+
+    * Un seule requête (*/api/all*) pour toutes les données d'un coup
+    * fonction apiFetch gère GET et POST
+
+* **20/10** &nbsp; *Actualisation automatique*
+
+    * Rafraîchit automatiquement les nouvelles livraisons sur un interval définit
+    * Style du formulaire
+
+* **19/10** &nbsp; *Fomulaire fonctionnel*
+
+    * Formulaire ajoute dans la BDD
+
+* **17/10** &nbsp; *Formulaire pour ajouter*
+
+    * Affichage du formulaire quand clique sur une case
+    * Destination et date récupérées automatiquements
+
 * **16/10** &nbsp; *Affichage du tableau fonctionnel et terminé*
 
     * Favoris à gauche puis mélangé
