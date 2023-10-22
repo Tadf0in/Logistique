@@ -18,10 +18,10 @@ export default function Td ({ data={}, date, destination, listDestinations }) {
         }
     }
 
-    return <div className="td" onClick={() => {if (!adding) {setAdding(true)}}}>
+    return <>
 
-        { rempli > 0 && 
-        <>
+        { rempli > 0 ?
+        <div className="td">
             { !data.destination.favorite && <p>{data.destination.lieu}</p> }
             <p>{data.taille}</p>
             <p style={{color: (data.status === 'B') ? "red" : (data.status === 'D') ? "green" : "black",}}>
@@ -30,16 +30,17 @@ export default function Td ({ data={}, date, destination, listDestinations }) {
 
             <span className="edit">
                 <button className="check" onClick={() => apiFetch('/api/livraisons/'+data.id, {method:'PATCH'})}>V</button>
-                <button className="plus">+</button>
+                <button className="plus" onClick={() => {if (!adding) {setAdding(true)}}}>+</button>
                 <button className="minus">-</button>
                 <button className="pen">/</button>
             </span>
 
             <hr className='barre' id='barre' hidden={!data.finish}/>
-        </> 
+        </div> 
+        : <div className="td" onClick={() => {if (!adding) {setAdding(true)}}}></div>
         }  
 
         { adding && <AddForm close={setAddingFalse} date={date} destination={destination} listDestinations={listDestinations}/> }
 
-    </div>
+    </>
 }

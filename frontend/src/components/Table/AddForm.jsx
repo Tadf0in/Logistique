@@ -36,9 +36,9 @@ export default function AddForm ({ close, date, destination, listDestinations })
     return <div id="addform">
         <button className="close" onClick={() => close()}>×</button>
         <form onSubmit={(e) => submitNewLivraison(e)}>
-            <select name="destination" onChange={(e) => valueChange('destination', e.target.value)}>
+            <select name="destination" value={formData['destination']} onChange={(e) => valueChange('destination', e.target.value)}>
                 { Object.values(listDestinations).map((d, i) => {
-                    return <option value={d.lieu} key={i} selected={d === destination}>{d.lieu}</option>    
+                    return <option value={d.lieu} key={i}>{d.lieu}</option>    
                 }
                 )}
                 <option value=""></option>

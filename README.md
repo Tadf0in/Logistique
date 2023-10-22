@@ -2,7 +2,7 @@
 
 ## Avancées
 
-* **22/10** &nbsp; *Boutons + barre*
+* **22/10** &nbsp; *Boutons de modif + barre*
 
     * PATCH */api/livraisons/:id*
     * Barre la case

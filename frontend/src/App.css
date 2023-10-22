@@ -126,7 +126,7 @@
 
 #addform {
   z-index: 4;
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
@@ -222,14 +222,17 @@
   opacity: 100%;
   cursor: pointer;
 }
-.edit .plus {
+.edit .check {
   background-color: #0a0;
+}
+.edit .plus {
+  background-color: #00a;
 }
 .edit .minus {
   background-color: #a00;
 }
 .edit .pen {
-  background-color: #00a;
+  background-color: #aa0;
 }
 
 .barre {
