@@ -2,15 +2,18 @@
 
 ## Avancées
 
-* **22/10** &nbsp; *Listes déroulantes*
+* **22/10** &nbsp; *Boutons + barre*
 
-    * Select dans addform
-    * back get_or_create destination quand nouvelle livraison
+    * PATCH */api/livraisons/:id*
+    * Barre la case
+    * Boutons de modif (que check marche pour l'instant)
 
-* **21/10** &nbsp; *Optimisation des requêtes*
+* **21/10** &nbsp; *Optimisation des requêtes et Listes déroulantes*
 
     * Un seule requête (*/api/all*) pour toutes les données d'un coup
     * fonction apiFetch gère GET et POST
+    * Select dans addform
+    * back get_or_create destination quand nouvelle livraison
 
 * **20/10** &nbsp; *Actualisation automatique*
 
