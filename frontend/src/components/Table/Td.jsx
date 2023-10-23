@@ -2,12 +2,15 @@ import { useState } from "react"
 import AddForm from "./AddForm"
 import apiFetch from "../../utils/apiFetch"
 
-export default function Td ({ data={}, date, destination, listDestinations, forceRefresh }) {
+export default function Td ({ data, date, destination, listDestinations, forceRefresh }) {
     const [adding, setAdding] = useState(false)
+    const [editing, setEditing] = useState(false)
+
     const rempli = Object.keys(data).length > 0
 
     const setAddingFalse = () => {
         setAdding(false)
+        setEditing(false)
     }
 
     if (Array.isArray(data)) {
@@ -34,9 +37,9 @@ export default function Td ({ data={}, date, destination, listDestinations, forc
 
             <span className="edit">
                 <button className="check" onClick={() => edit('PATCH')}>V</button>
-                <button className="plus" onClick={() => {if (!adding) {setAdding(true)}}}>+</button>
+                <button className="plus" onClick={() => {if (!adding) {setAdding(true);setEditing(false)}}}>+</button>
                 <button className="minus" onClick={() => edit('DELETE')}>-</button>
-                <button className="pen">/</button>
+                { !data.finish && <button className="pen" onClick={() => {if (!adding) {setAdding(true);setEditing(true)}}}>/</button>}
             </span>
 
             <hr className='barre' id='barre' hidden={!data.finish}/>
@@ -44,7 +47,7 @@ export default function Td ({ data={}, date, destination, listDestinations, forc
         : <div className="td" onClick={() => {if (!adding) {setAdding(true)}}}></div>
         }  
 
-        { adding && <AddForm close={setAddingFalse} date={date} destination={destination} listDestinations={listDestinations} forceRefresh={forceRefresh}/> }
-
+        { adding && <AddForm editing={false} close={setAddingFalse} date={date} destination={destination} listDestinations={listDestinations} forceRefresh={forceRefresh}/> }
+        { editing && <AddForm editing={true} close={setAddingFalse} date={date} data={data} listDestinations={listDestinations} forceRefresh={forceRefresh}/>}
     </>
 }

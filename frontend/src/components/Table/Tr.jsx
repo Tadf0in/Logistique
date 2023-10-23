@@ -35,6 +35,6 @@ export default function Tr ({ jour, date, livraisons, favoris, listDestinations,
                 />
             )
         }
-        <Td date={date} destination='' listDestinations={listDestinations} forceRefresh={forceRefresh}/>
+        <Td data={{}} date={date} destination='' listDestinations={listDestinations} forceRefresh={forceRefresh}/>
     </div>
 }

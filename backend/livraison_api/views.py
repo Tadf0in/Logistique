@@ -34,12 +34,14 @@ class LivraisonView(APIView):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def put(self, request, id):
-        pass
+        Livraison.objects.get(pk=id).delete()
+        return LivraisonsView().post(request)
 
     def delete(self, request, id):
         livraison = Livraison.objects.get(pk=id)
         livraison.hidden = True
         livraison.save()
+        return Response(status=status.HTTP_200_OK)
 
     def patch(self, request, id):
         livraison = Livraison.objects.get(pk=id)
