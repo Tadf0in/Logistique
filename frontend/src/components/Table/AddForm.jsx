@@ -2,7 +2,7 @@ import { useState } from "react"
 import Input, { Select } from "../../utils/Fields"
 import apiFetch from "../../utils/apiFetch"
 
-export default function AddForm ({ close, date, destination, listDestinations }) {
+export default function AddForm ({ close, date, destination, listDestinations, forceRefresh }) {
     const formatDate = (date) => {
         return date.getFullYear() + '-' + ("0" + (date.getMonth() + 1)).slice(-2) + '-' +("0" + date.getDate()).slice(-2)
     }
@@ -26,6 +26,7 @@ export default function AddForm ({ close, date, destination, listDestinations })
                 'Content-type': 'application/json'
             }
         })
+        forceRefresh()
         close()
     }
 
