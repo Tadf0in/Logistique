@@ -37,7 +37,9 @@ class LivraisonView(APIView):
         pass
 
     def delete(self, request, id):
-        pass
+        livraison = Livraison.objects.get(pk=id)
+        livraison.hidden = True
+        livraison.save()
 
     def patch(self, request, id):
         livraison = Livraison.objects.get(pk=id)

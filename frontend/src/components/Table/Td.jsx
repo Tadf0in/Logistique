@@ -24,7 +24,7 @@ export default function Td ({ data={}, date, destination, listDestinations, forc
     }
 
     return <>
-        { rempli > 0 ?
+        { rempli > 0 && !data.hidden ?
         <div className="td">
             { !data.destination.favorite && <p>{data.destination.lieu}</p> }
             <p>{data.taille}</p>
@@ -35,7 +35,7 @@ export default function Td ({ data={}, date, destination, listDestinations, forc
             <span className="edit">
                 <button className="check" onClick={() => edit('PATCH')}>V</button>
                 <button className="plus" onClick={() => {if (!adding) {setAdding(true)}}}>+</button>
-                <button className="minus">-</button>
+                <button className="minus" onClick={() => edit('DELETE')}>-</button>
                 <button className="pen">/</button>
             </span>
 

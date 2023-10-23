@@ -2,6 +2,11 @@
 
 ## Avancées
 
+* **23/10** &nbsp; *Actualise les modifs en temps réel + supprime*
+
+    * forceRefresh
+    * DELETE */api/livraisons/:id*
+
 * **22/10** &nbsp; *Boutons de modif + barre*
 
     * PATCH */api/livraisons/:id*
