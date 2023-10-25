@@ -45,7 +45,15 @@ class LivraisonView(APIView):
 
     def patch(self, request, id):
         livraison = Livraison.objects.get(pk=id)
-        livraison.finish = not livraison.finish
+        if livraison.finish:
+            livraison.finish = False
+            livraison.quai = False
+        elif livraison.quai:
+            livraison.finish = True
+            livraison.quai = False
+        else:
+            livraison.finish = False
+            livraison.quai = True
         livraison.save()
         return Response(status=status.HTTP_200_OK)
 
