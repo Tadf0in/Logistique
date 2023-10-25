@@ -1,6 +1,5 @@
 import { useState } from "react"
 import AddForm from "./Cell/AddForm"
-import apiFetch from "../../utils/apiFetch"
 import adr from "../../assets/adr.png"
 import Edit from "./Cell/Edit"
 import Details from "./Cell/Details"
@@ -28,7 +27,7 @@ export default function Td ({ data, date, destination, listDestinations, forceRe
 
     return <>
         { rempli > 0 ?
-        <div className="td" style={{backgroundColor: data.quai ? '#eefce9' : ''}} onClick={() => {if (!details) {setDetails(true)}}}>
+        <div className="td" style={{backgroundColor: data.quai ? '#eefce9' : ''}} onClick={(e) => {if (!details && e.target === e.currentTarget) {setDetails(true)}}}>
             { !data.destination.favorite && <p>{data.destination.lieu}</p> }
             <p>{data.taille}</p>
             <p style={{color: (data.status[0] === 'B') ? "red" : (data.status[0] === 'D') ? "green" : "black",}}>

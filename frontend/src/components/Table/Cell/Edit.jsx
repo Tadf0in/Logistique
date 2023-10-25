@@ -1,7 +1,10 @@
+import apiFetch from "../../../utils/apiFetch"
+
 export default function Edit ({ data, forceRefresh, adding, setAdding, setEditing }) {
 
-    const edit = (method) => {
-        apiFetch('/api/livraisons/'+data.id, {method:method})
+    const edit = async (method) => {
+        await apiFetch('/api/livraisons/'+data.id, {method:method})
+        await new Promise(r => setTimeout(r, 100))
         forceRefresh()
     }
 

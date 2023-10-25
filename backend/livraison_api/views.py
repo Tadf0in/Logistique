@@ -82,7 +82,7 @@ class UpdateDestinations(APIView):
 
 class PreparateursView(APIView):
     def get(self, request):
-        preparateurs = Preparateur.objects.order_by('lieu')
+        preparateurs = Preparateur.objects.order_by('nom')
         serializer = PreparateurSerializer(preparateurs, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
     

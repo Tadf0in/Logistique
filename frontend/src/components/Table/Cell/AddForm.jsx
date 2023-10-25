@@ -29,7 +29,7 @@ export default function AddForm ({ editing, close, date, destination, data, list
                 'Content-type': 'application/json'
             }
         })
-        await new Promise(r => setTimeout(r, 100));
+        await new Promise(r => setTimeout(r, 100))
         forceRefresh()
         close()
     }

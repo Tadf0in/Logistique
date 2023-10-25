@@ -16,7 +16,7 @@ class PreparateurSerializer(serializers.ModelSerializer):
 
 class LivraisonSerializer(serializers.ModelSerializer):
     destination = DestinationSerializer()
-    preparateur = PreparateurSerializer()
+    preparateur = PreparateurSerializer(required=False, allow_null=True)
 
     def create(self, data):
         data['destination'] = Destination.objects.get(pk=data['destination']['id'])
