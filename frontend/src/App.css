@@ -177,9 +177,18 @@
 #addform select:nth-child(1) {
   border-radius: 5px 5px 0 0;
 }
-#addform input:nth-last-child(2) {
+#addform .adr-span {
+  border: solid 1px #aaa;
   border-radius: 0 0 5px 5px;
   border-bottom: solid 1px #aaa;
+  display: flex;
+  align-items: center;
+}
+#addform #adr {
+  width: 2vh;
+}
+#addform label {
+  font-size: 2vh;
 }
 #addform .add {
   font-size: var(--th-font-size);

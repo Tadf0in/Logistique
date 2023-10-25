@@ -12,11 +12,14 @@ export default function AddForm ({ editing, close, date, destination, data, list
         taille: 'FTL',
         status: 'B',
         ref: '',
-        date: formatDate(date)
+        date: formatDate(date),
+        adr: false
     })
 
     const submitNewLivraison = async (e) => {
         e.preventDefault()
+
+        console.log(JSON.stringify(formData))
 
         let id = editing ? data.id : ''
         await apiFetch('/api/livraisons/'+id, {
@@ -50,6 +53,10 @@ export default function AddForm ({ editing, close, date, destination, data, list
             <Select name='taille' get={formData[['taille']]} set={valueChange} options={['FTL', '3L/M', '6L/M', 'express', 'TNT']}/>
             <Select name='status' get={formData[['status']]} set={valueChange} options={['B', 'D', 'B+CMR']}/>
             <Input type='text' placeholder='Ref' name='ref' get={formData[['ref']]} set={valueChange}/>
+            <span className="adr-span">
+                <input type="checkbox" id='adr' name='adr' checked={formData['adr']} onChange={(e) => valueChange('adr', e.target.checked)}/>
+                <label for='adr'>ADR</label>
+            </span>
             <button type="submit" className="add">{editing ? 'Modifier' : 'Ajouter'}</button>
         </form>
     </div> 
