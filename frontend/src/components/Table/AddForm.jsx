@@ -2,12 +2,12 @@ import { useState } from "react"
 import Input, { Select } from "../../utils/Fields"
 import apiFetch from "../../utils/apiFetch"
 
-export default function AddForm ({ close, date, destination, listDestinations }) {
+export default function AddForm ({ editing, close, date, destination, data, listDestinations, forceRefresh }) {
     const formatDate = (date) => {
         return date.getFullYear() + '-' + ("0" + (date.getMonth() + 1)).slice(-2) + '-' +("0" + date.getDate()).slice(-2)
     }
 
-    const [formData, setFormData] = useState({
+    const [formData, setFormData] = useState(editing ? {...data, 'destination': data.destination.lieu} : {
         destination: destination.lieu,
         taille: 'FTL',
         status: 'B',
@@ -17,15 +17,16 @@ export default function AddForm ({ close, date, destination, listDestinations })
 
     const submitNewLivraison = async (e) => {
         e.preventDefault()
-        console.log(JSON.stringify(formData))
 
-        await apiFetch('/api/livraisons/', {
-            method: 'POST',
+        let id = editing ? data.id : ''
+        await apiFetch('/api/livraisons/'+id, {
+            method: editing ? 'PUT' : 'POST',
             body: JSON.stringify(formData),
             headers: {
                 'Content-type': 'application/json'
             }
         })
+        forceRefresh()
         close()
     }
 
@@ -36,9 +37,9 @@ export default function AddForm ({ close, date, destination, listDestinations })
     return <div id="addform">
         <button className="close" onClick={() => close()}>×</button>
         <form onSubmit={(e) => submitNewLivraison(e)}>
-            <select name="destination" onChange={(e) => valueChange('destination', e.target.value)}>
+            <select name="destination" value={formData['destination']} onChange={(e) => valueChange('destination', e.target.value)}>
                 { Object.values(listDestinations).map((d, i) => {
-                    return <option value={d.lieu} key={i} selected={d === destination}>{d.lieu}</option>    
+                    return <option value={d.lieu} key={i}>{d.lieu}</option>    
                 }
                 )}
                 <option value=""></option>
@@ -47,7 +48,7 @@ export default function AddForm ({ close, date, destination, listDestinations })
             <Select name='taille' get={formData[['taille']]} set={valueChange} options={['FTL', '3L/M', '6L/M']}/>
             <Select name='status' get={formData[['status']]} set={valueChange} options={['B', 'D']}/>
             <Input type='text' placeholder='Ref' name='ref' get={formData[['ref']]} set={valueChange}/>
-            <button type="submit" className="add">Ajouter</button>
+            <button type="submit" className="add">{editing ? 'Modifier' : 'Ajouter'}</button>
         </form>
     </div> 
 }

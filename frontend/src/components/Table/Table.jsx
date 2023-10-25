@@ -19,10 +19,14 @@ export default function Table () {
         setWeekDays(getDaysOfWeek(today))
     }, [today])
 
+    const forceRefresh = () => {
+        setWeekDays(arr => [new Date(arr[0].getTime() + 1)].concat(arr.slice(1)))
+    }
+
     return <div id="tableau">
         <div className="tab">
             <Theader today={today} setToday={setToday}/>
-            { weekDays && <Tbody weekDays={weekDays}/>}
+            { weekDays && <Tbody weekDays={weekDays} forceRefresh={forceRefresh}/>}
         </div>
     </div>
 }

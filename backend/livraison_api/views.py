@@ -25,6 +25,29 @@ class LivraisonsView(APIView):
             if livraison is not None:
                 return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(status=status.HTTP_400_BAD_REQUEST)
+    
+
+class LivraisonView(APIView):
+    def get(self, request, id):
+        livraison = Livraison.objects.get(pk=id)
+        serializer = LivraisonSerializer(livraison)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+    def put(self, request, id):
+        Livraison.objects.get(pk=id).delete()
+        return LivraisonsView().post(request)
+
+    def delete(self, request, id):
+        livraison = Livraison.objects.get(pk=id)
+        livraison.hidden = True
+        livraison.save()
+        return Response(status=status.HTTP_200_OK)
+
+    def patch(self, request, id):
+        livraison = Livraison.objects.get(pk=id)
+        livraison.finish = not livraison.finish
+        livraison.save()
+        return Response(status=status.HTTP_200_OK)
 
 
 class DestinationsView(APIView):

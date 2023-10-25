@@ -2,15 +2,25 @@
 
 ## Avancées
 
-* **22/10** &nbsp; *Listes déroulantes*
+* **23/10** &nbsp; *Actualise les modifs en temps réel + supprime + modif*
 
-    * Select dans addform
-    * back get_or_create destination quand nouvelle livraison
+    * forceRefresh
+    * DELETE */api/livraisons/:id*
+    * PUT */api/livraisons/:id*
+    * EditingForm
 
-* **21/10** &nbsp; *Optimisation des requêtes*
+* **22/10** &nbsp; *Boutons de modif + barre*
+
+    * PATCH */api/livraisons/:id*
+    * Barre la case
+    * Boutons de modif (que check marche pour l'instant)
+
+* **21/10** &nbsp; *Optimisation des requêtes et Listes déroulantes*
 
     * Un seule requête (*/api/all*) pour toutes les données d'un coup
     * fonction apiFetch gère GET et POST
+    * Select dans addform
+    * back get_or_create destination quand nouvelle livraison
 
 * **20/10** &nbsp; *Actualisation automatique*
 

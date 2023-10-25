@@ -73,6 +73,7 @@
   display: flex;
 }
 .th {
+  z-index: 5;
   border-right: var(--border);
   background-color: var(--first-column-color);
   width: var(--first-column-width);
@@ -97,6 +98,7 @@
   border-right: var(--border);
 
   width: var(--cell-width);
+  height: 100%;
   
   display: flex;
   flex-direction: column;
@@ -123,7 +125,8 @@
 
 
 #addform {
-  position: absolute;
+  z-index: 4;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
@@ -184,4 +187,58 @@
 }
 #addform .add:hover {
   background: var(--color-1);
+}
+
+.td {
+  position: relative;
+}
+.edit {
+  position: absolute;
+  display: none;
+  width: 2vh;
+  right: 5px;
+  top: 5px;
+}
+.td:hover .edit {
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.edit button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.4vh;
+  width: 100%;
+  height: 2vh;
+  border-radius: 50%;
+  padding: 2px;
+  border: none;
+  color: white;
+  opacity: 50%;
+}
+.edit button:hover {
+  opacity: 100%;
+  cursor: pointer;
+}
+.edit .check {
+  background-color: #0a0;
+}
+.edit .plus {
+  background-color: #00a;
+}
+.edit .minus {
+  background-color: #a00;
+}
+.edit .pen {
+  background-color: #aa0;
+}
+
+.barre {
+  z-index: 1;
+  position: absolute;
+  color: red;
+  width: calc(var(--cell-width) + 5.7vh);
+  rotate: -45deg;
 }

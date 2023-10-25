@@ -1,6 +1,6 @@
 import Td from "./Td";
 
-export default function Tr ({ jour, date, livraisons, favoris, listDestinations }) {
+export default function Tr ({ jour, date, livraisons, favoris, listDestinations, forceRefresh }) {
     const isSameDay = (day1, day2) => 
         day1.getFullYear() === day2.getFullYear() && 
         day1.getMonth() ===  day2.getMonth() && 
@@ -18,6 +18,7 @@ export default function Tr ({ jour, date, livraisons, favoris, listDestinations 
                     destination={destination}
                     date={date}
                     listDestinations={listDestinations}
+                    forceRefresh={forceRefresh}
                     key={'fav-'+i}
                 />
             )
@@ -29,10 +30,11 @@ export default function Tr ({ jour, date, livraisons, favoris, listDestinations 
                     date={date}
                     destination=''
                     listDestinations={listDestinations}
+                    forceRefresh={forceRefresh}
                     key={i}
                 />
             )
         }
-        <Td date={date} destination='' listDestinations={listDestinations}/>
+        <Td data={{}} date={date} destination='' listDestinations={listDestinations} forceRefresh={forceRefresh}/>
     </div>
 }

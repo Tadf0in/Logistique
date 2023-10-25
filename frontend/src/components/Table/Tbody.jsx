@@ -3,7 +3,7 @@ import apiFetch from "../../utils/apiFetch";
 import Thead from "./Thead";
 import Tr from "./Tr";
 
-export default function Tbody ({weekDays}) {
+export default function Tbody ({weekDays, forceRefresh}) {
     const [loading, setLoading] = useState(true)
     const [data, setData] = useState()
     
@@ -47,6 +47,7 @@ export default function Tbody ({weekDays}) {
                     livraisons={livraisonsData.filter((livraison) => livraison.date === formatDay(weekDays[i]))}
                     favoris={favoritesData}
                     listDestinations={destinationsData}
+                    forceRefresh={forceRefresh}
                     key={i}
                 />
             )}
