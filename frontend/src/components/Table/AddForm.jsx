@@ -35,7 +35,9 @@ export default function AddForm ({ editing, close, date, destination, data, list
     }
 
     return <div id="addform">
-        <button className="close" onClick={() => close()}>×</button>
+        <button className="close" onClick={() => close()}>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>
+        </button>
         <form onSubmit={(e) => submitNewLivraison(e)}>
             <select name="destination" value={formData['destination']} onChange={(e) => valueChange('destination', e.target.value)}>
                 { Object.values(listDestinations).map((d, i) => {
@@ -45,8 +47,8 @@ export default function AddForm ({ editing, close, date, destination, data, list
                 <option value=""></option>
             </select>
             <Input type='date' placeholder='Date' name='date' get={formData[['date']]} set={valueChange}/>
-            <Select name='taille' get={formData[['taille']]} set={valueChange} options={['FTL', '3L/M', '6L/M']}/>
-            <Select name='status' get={formData[['status']]} set={valueChange} options={['B', 'D']}/>
+            <Select name='taille' get={formData[['taille']]} set={valueChange} options={['FTL', '3L/M', '6L/M', 'express', 'TNT']}/>
+            <Select name='status' get={formData[['status']]} set={valueChange} options={['B', 'D', 'B+CMR']}/>
             <Input type='text' placeholder='Ref' name='ref' get={formData[['ref']]} set={valueChange}/>
             <button type="submit" className="add">{editing ? 'Modifier' : 'Ajouter'}</button>
         </form>
