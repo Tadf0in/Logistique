@@ -35,7 +35,7 @@ export default function Td ({ data, date, destination, listDestinations, forceRe
             <p style={{color: (data.status[0] === 'B') ? "red" : (data.status[0] === 'D') ? "green" : "black",}}>
                 {data.status}
             </p>
-            { data.adr || true && <img src={adr} alt='adr' className="picto"></img>}
+            { data.adr && <img src={adr} alt='adr' className="picto"></img>}
             <p>{data.ref}</p>
 
             <span className="edit">

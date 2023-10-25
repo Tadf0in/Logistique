@@ -16,6 +16,7 @@ class Livraison(models.Model):
     date = models.DateField()
     finish = models.BooleanField(verbose_name='Terminée', default=False)
     hidden = models.BooleanField(verbose_name='Cachée', default=False)
+    adr = models.BooleanField(default=False)
 
     def __str__(self) -> str:
         return str(self.destination) + ' - ' + str(self.date)
