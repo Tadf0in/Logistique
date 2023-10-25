@@ -23,9 +23,9 @@ export default function Tbody ({weekDays, forceRefresh}) {
         return () => clearInterval(interval)
     }, [weekDays])
 
-    let livraisonsData = undefined
-    let destinationsData = undefined
-    let favoritesData = undefined
+    let livraisonsData
+    let destinationsData
+    let favoritesData
     if (data) {
         livraisonsData = data.livraisons
         destinationsData = data.destinations

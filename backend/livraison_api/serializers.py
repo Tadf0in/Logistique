@@ -8,8 +8,15 @@ class DestinationSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class PreparateurSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Preparateur
+        fields = '__all__'
+
+
 class LivraisonSerializer(serializers.ModelSerializer):
     destination = DestinationSerializer()
+    preparateur = PreparateurSerializer()
 
     def create(self, data):
         data['destination'] = Destination.objects.get(pk=data['destination']['id'])

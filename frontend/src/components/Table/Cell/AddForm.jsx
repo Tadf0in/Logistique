@@ -1,6 +1,6 @@
 import { useState } from "react"
-import Input, { Select } from "../../utils/Fields"
-import apiFetch from "../../utils/apiFetch"
+import Input, { Select } from "../../../utils/Fields"
+import apiFetch from "../../../utils/apiFetch"
 
 export default function AddForm ({ editing, close, date, destination, data, listDestinations, forceRefresh }) {
     const formatDate = (date) => {
@@ -29,6 +29,7 @@ export default function AddForm ({ editing, close, date, destination, data, list
                 'Content-type': 'application/json'
             }
         })
+        await new Promise(r => setTimeout(r, 100));
         forceRefresh()
         close()
     }
@@ -55,7 +56,7 @@ export default function AddForm ({ editing, close, date, destination, data, list
             <Input type='text' placeholder='Ref' name='ref' get={formData[['ref']]} set={valueChange}/>
             <span className="adr-span">
                 <input type="checkbox" id='adr' name='adr' checked={formData['adr']} onChange={(e) => valueChange('adr', e.target.checked)}/>
-                <label for='adr'>ADR</label>
+                <label htmlFor='adr'>ADR</label>
             </span>
             <button type="submit" className="add">{editing ? 'Modifier' : 'Ajouter'}</button>
         </form>

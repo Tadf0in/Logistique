@@ -8,4 +8,5 @@ urlpatterns = [
     path('all', views.GetAll.as_view(), name='all'),
     path('destinations', views.DestinationsView.as_view(), name='destinations'),
     path('destinations/update', views.UpdateDestinations.as_view(), name='update-destinations'),
+    path('preparateurs', views.PreparateursView.as_view(), name='preparateurs'),
 ]

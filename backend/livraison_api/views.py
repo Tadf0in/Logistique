@@ -80,6 +80,13 @@ class UpdateDestinations(APIView):
         return Response(status=status.HTTP_201_CREATED)
     
 
+class PreparateursView(APIView):
+    def get(self, request):
+        preparateurs = Preparateur.objects.order_by('lieu')
+        serializer = PreparateurSerializer(preparateurs, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    
+
 class GetAll(APIView):
     def get(self, request):
         return Response({
