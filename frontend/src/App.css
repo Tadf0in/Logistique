@@ -128,7 +128,7 @@
 }
 
 
-#addform, .details {
+#addform, .details, .confirm {
   z-index: 4;
   position: fixed;
   top: 50%;
@@ -301,4 +301,36 @@ svg path {
 }
 #comments {
   width: 100%;
+}
+
+.confirm {
+  padding: 10px;
+  gap: 5px;
+  cursor: default;
+}
+.confirm p {
+  max-width: 100%;
+  direction: ltr;
+  font-size: var(--th-font-size );
+}
+.confirm-buttons {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+.confirm-buttons button {
+  font-size: var(--th-font-size );
+  padding: 5px 10px;
+  border-radius: 50px;
+  cursor: pointer;
+}
+.confirm .cancel, .confirm .ok:hover {
+  background-color: white;
+  border: solid 2px red;
+  color: red;
+}
+.confirm .ok, .confirm .cancel:hover {
+  background-color: red;
+  border: solid 2px red;
+  color: white;
 }
