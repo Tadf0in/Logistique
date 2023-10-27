@@ -30,7 +30,6 @@ export default function Edit ({ data, forceRefresh, adding, setAdding, setEditin
     { confirm &&
     <span className="confirm">
         <p>Confirmer la suppression de cet élément ?</p>
-        <br/>
         <span className="confirm-buttons">
             <button className="cancel" onClick={() => setConfirm(false)}>Annuler</button>
             <button className="ok" onClick={() => {setConfirm(false);edit('DELETE')}}>Confirmer</button>

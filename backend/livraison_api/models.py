@@ -16,7 +16,7 @@ class Preparateur(models.Model):
 
 
 class Livraison(models.Model):
-    destination = models.ForeignKey(Destination, on_delete=models.SET_NULL, null=True)
+    destination = models.ForeignKey(Destination, on_delete=models.CASCADE, null=True)
     taille = models.CharField(max_length=15)
     status = models.CharField(max_length=15)
     ref = models.CharField(max_length=50)

@@ -174,7 +174,7 @@
   border-bottom: 0;
   font-size: var(--td-font-size);
 }
-#addform select:nth-child(1) {
+#addform .select {
   border-radius: 5px 5px 0 0;
 }
 #addform .adr-span {
