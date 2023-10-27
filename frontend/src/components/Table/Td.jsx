@@ -10,19 +10,12 @@ export default function Td ({ data, date, destination, listDestinations, forceRe
     const [details, setDetails] = useState(false)
 
     const rempli = Object.keys(data).length > 0
+    if (Array.isArray(data)) { data = data[0] }
 
     const setFalse = () => {
         setAdding(false)
         setEditing(false)
         setDetails(false)
-    }
-
-    if (Array.isArray(data)) {
-        if (data.length === 1) { data = data[0]}
-        else if (data.length > 1) {
-            data = data[0]
-            // Many in one cell
-        }
     }
 
     return <>

@@ -13,6 +13,11 @@ class LivraisonsView(APIView):
     
     def post(self, request):
         data = request.data
+
+        same = Livraison.objects.filter(date=data['date'], destination__lieu__startswith=data['destination'])
+        if same.exists():
+            data['destination'] = data['destination'] + ' #' + str(same.count()+1)
+
         destination, new_destination = Destination.objects.get_or_create(lieu=data['destination']) 
         if destination:
             data['destination'] = destination.__dict__
