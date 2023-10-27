@@ -20,10 +20,10 @@ export default function Td ({ data, date, destination, listDestinations, forceRe
 
     return <>
         { rempli > 0 ?
-        <div className="td" style={{backgroundColor: data.quai ? '#eefce9' : ''}} onClick={(e) => {if (!details && e.target === e.currentTarget) {setDetails(true)}}}>
+        <div className="td" style={{backgroundColor: data.quai ? '#dbffdb' : data.finish ? '#ffdbdb' : ''}} onClick={(e) => {if (!details && e.target === e.currentTarget) {setDetails(true)}}}>
             { !data.destination.favorite && <p>{data.destination.lieu}</p> }
             <p>{data.taille}</p>
-            <p style={{color: (data.status[0] === 'B') ? "red" : (data.status[0] === 'D') ? "green" : "black",}}>
+            <p style={{color: (data.status[0] === 'B') ? "red" : (data.status[0] === 'D') ? "green" : "black"}}>
                 {data.status}
             </p>
             { data.adr && <img src={adr} alt='adr' className="picto"></img>}
@@ -31,7 +31,7 @@ export default function Td ({ data, date, destination, listDestinations, forceRe
 
             <Edit data={data} forceRefresh={forceRefresh} adding={adding} setAdding={setAdding} setEditing={setEditing} />
 
-            <hr className='barre' id='barre' hidden={!data.finish}/>
+            {/* <hr className='barre' id='barre' hidden={!data.finish}/> */}
         </div> 
         : <div className="td" onClick={() => {if (!adding) {setAdding(true)}}}></div>
         }  
