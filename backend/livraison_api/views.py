@@ -5,9 +5,9 @@ from .serializers import *
 class LivraisonsView(APIView):
     def get(self, request):
         if 'start' in request.GET and 'end' in request.GET:
-            livraisons = Livraison.objects.filter(date__range=[request.GET['start'], request.GET['end']]).order_by('destination__lieu')
+            livraisons = Livraison.objects.filter(hidden=False, date__range=[request.GET['start'], request.GET['end']]).order_by('destination__lieu')
         else:
-            livraisons = Livraison.objects.all().order_by('destination__lieu')
+            livraisons = Livraison.objects.filter(hidden=False).order_by('destination__lieu')
         serializer = LivraisonSerializer(livraisons, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
     
@@ -45,7 +45,15 @@ class LivraisonView(APIView):
 
     def patch(self, request, id):
         livraison = Livraison.objects.get(pk=id)
-        livraison.finish = not livraison.finish
+        if livraison.finish:
+            livraison.finish = False
+            livraison.quai = False
+        elif livraison.quai:
+            livraison.finish = True
+            livraison.quai = False
+        else:
+            livraison.finish = False
+            livraison.quai = True
         livraison.save()
         return Response(status=status.HTTP_200_OK)
 

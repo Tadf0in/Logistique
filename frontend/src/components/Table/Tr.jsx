@@ -28,13 +28,13 @@ export default function Tr ({ jour, date, livraisons, favoris, listDestinations,
                 <Td 
                     data={livraison} 
                     date={date}
-                    destination=''
+                    destination={listDestinations[0]}
                     listDestinations={listDestinations}
                     forceRefresh={forceRefresh}
                     key={i}
                 />
             )
         }
-        <Td data={{}} date={date} destination='' listDestinations={listDestinations} forceRefresh={forceRefresh}/>
+        <Td data={{}} date={date} destination={listDestinations[0]} listDestinations={listDestinations} forceRefresh={forceRefresh}/>
     </div>
 }
