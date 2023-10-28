@@ -25,7 +25,7 @@ class LivraisonsView(APIView):
             data['destination'] = new_destination.__dict__
 
         if 'preparateur' in data :
-            if data['preparateur'] is None or data['preparateur'] == 'indefini':
+            if data['preparateur'] is None or data['preparateur'] in ['', 'indefini']:
                 del data['preparateur']
             else :
                 preparateur, new_preparateur = Preparateur.objects.get_or_create(nom=data['preparateur'])
