@@ -6,7 +6,11 @@ export default function Details ({ data, setFalse, forceRefresh }) {
 
     const [edit, setEdit] = useState(false)
     const [listPreparateurs, setListPreparateurs] = useState()
-    const [formData, setFormData] = useState({...data, destination: data.destination.lieu})
+    const [formData, setFormData] = useState({
+        ...data, 
+        destination: data.destination.lieu, 
+        preparateur: data.preparateur ? data.preparateur.nom : 'indefini' 
+    })
     
     useEffect(() => {
         const get = async () => {
@@ -14,10 +18,6 @@ export default function Details ({ data, setFalse, forceRefresh }) {
             setListPreparateurs(data)
         } 
         get()
-
-        if (!formData['preparateur']) {
-            valueChange('preparateur', 'indefini')
-        }
     }, [])
 
     const submitNewLivraison = async (e) => {
