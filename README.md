@@ -18,7 +18,7 @@ Installation des librairies python :
 pip install -r requirements.txt
 ```
 
-Créer un fichier *.env* à la racine du projet, et rentrer les informations de la base de donnée (à voir avec l'IT je pense) :
+Créer un fichier `.env` à la racine du projet, et rentrer les informations de la base de donnée (à voir avec l'IT je pense) :
 
 ```
 SECRET_KEY=...
@@ -37,6 +37,13 @@ cd backend
 py manage.py runserver --insecure
 ```
 
+### <ins>Ajouter les destinations dans la BDD :</ins>
+
+1. Lister les destinations dans le fichier `backend\destinations.txt`
+2. Aller sur <ins>/api/livraisons/destinations/update</ins>
+3. Cliquer sur le bouton **POST**
+
+
 ## Avancées
 
 * **28/10** &nbsp; *Détails sur la livraison*
@@ -44,7 +51,7 @@ py manage.py runserver --insecure
     * Panneau de détails avec nb de palettes, préparateur, commentaires
     * Points demandés rajoutés
 
-* **24/10 -> 27/10**
+* **24/10 - 27/10**
 
     *J'ai arrêté de noter mais je t'ai montré en partage d'écran*
 

@@ -14,7 +14,7 @@ class LivraisonsView(APIView):
     def post(self, request):
         data = request.data
 
-        same = Livraison.objects.filter(date=data['date'], destination__lieu__startswith=data['destination'])
+        same = Livraison.objects.filter(hidden=False, date=data['date'], destination__lieu__startswith=data['destination'])
         if same.exists():
             data['destination'] = data['destination'] + ' #' + str(same.count()+1)
 
