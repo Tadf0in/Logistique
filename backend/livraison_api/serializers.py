@@ -20,6 +20,8 @@ class LivraisonSerializer(serializers.ModelSerializer):
 
     def create(self, data):
         data['destination'] = Destination.objects.get(pk=data['destination']['id'])
+        if 'preparateur' in data:
+            data['preparateur'] = Preparateur.objects.get(pk=data['preparateur']['id'])
         new_livraison = Livraison(**data)
         new_livraison.save()
         return new_livraison

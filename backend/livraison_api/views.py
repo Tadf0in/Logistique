@@ -24,6 +24,16 @@ class LivraisonsView(APIView):
         else:
             data['destination'] = new_destination.__dict__
 
+        if 'preparateur' in data :
+            if data['preparateur'] == 'indefini':
+                del data['preparateur']
+            else :
+                preparateur, new_preparateur = Preparateur.objects.get_or_create(nom=data['preparateur'])
+                if preparateur:
+                    data['preparateur'] = preparateur.__dict__
+                else:
+                    data['preparateur'] = new_preparateur.__dict__
+
         serializer = LivraisonSerializer(data=request.data)
         if serializer.is_valid(raise_exception=True):
             livraison = serializer.create(request.data)

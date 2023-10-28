@@ -19,8 +19,6 @@ export default function AddForm ({ editing, close, date, destination, data, list
     const submitNewLivraison = async (e) => {
         e.preventDefault()
 
-        console.log(JSON.stringify(formData))
-
         let id = editing ? data.id : ''
         await apiFetch('/api/livraisons/'+id, {
             method: editing ? 'PUT' : 'POST',

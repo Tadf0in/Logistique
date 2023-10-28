@@ -36,7 +36,7 @@ export default function Td ({ data, date, destination, listDestinations, forceRe
         : <div className="td" onClick={() => {if (!adding) {setAdding(true)}}}></div>
         }  
 
-        { details && <Details data={data} setFalse={setFalse} /> }
+        { details && <Details data={data} setFalse={setFalse} forceRefresh={forceRefresh}/> }
         { adding && <AddForm editing={false} close={setFalse} date={date} destination={destination} listDestinations={listDestinations} forceRefresh={forceRefresh}/> }
         { editing && <AddForm editing={true} close={setFalse} date={date} data={data} listDestinations={listDestinations} forceRefresh={forceRefresh}/>}
     </>
