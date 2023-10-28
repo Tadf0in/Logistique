@@ -1,3 +1,5 @@
+import logo from '../../assets/logo-avient.jpg'
+
 export default function Theader ({today, setToday}) { 
 
     const addDays = (date, nb_days) => new Date(date.getFullYear(), date.getMonth(), date.getDate() + nb_days)
@@ -9,13 +11,16 @@ export default function Theader ({today, setToday}) {
     }
 
     return <div className="theader">
-        <span>
-            <button className="left" onClick={() => setToday((date) => addDays(date, -7))}>{'<'}</button>
-            <button className="right" onClick={() => setToday((date) => addDays(date, +7))}>{'>'}</button>
-        </span>
+        <div className='img'>
+            <img src={logo} alt="avient"/>
+        </div>
 
         <p>SEMAINE {getWeek(today)}</p>
 
-        <button onClick={() => setToday(new Date())}>Aujourd'hui</button>
+        <span>
+            <button className="left" onClick={() => setToday((date) => addDays(date, -7))}>{'<'}</button>
+            <button className="right" onClick={() => setToday((date) => addDays(date, +7))}>{'>'}</button>
+            <button onClick={() => setToday(new Date())}>Aujourd'hui</button>
+        </span>
     </div>
 }
