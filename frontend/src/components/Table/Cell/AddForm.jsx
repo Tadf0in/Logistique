@@ -7,7 +7,11 @@ export default function AddForm ({ editing, close, date, destination, data, list
         return date.getFullYear() + '-' + ("0" + (date.getMonth() + 1)).slice(-2) + '-' +("0" + date.getDate()).slice(-2)
     }
 
-    const [formData, setFormData] = useState(editing ? {...data, 'destination': data.destination.lieu} : {
+    const [formData, setFormData] = useState(editing ? {
+        ...data, 
+        destination: data.destination.lieu, 
+        preparateur: data.preparateur ? data.preparateur.nom : 'indefini' 
+        } : {
         destination: destination.lieu,
         taille: 'FTL',
         status: 'B',
