@@ -4,10 +4,10 @@
 
 ### <ins>Uniquement la 1ère fois :</ins>
 
-Environnement virtuel (Optionnel) :
+Environnement virtuel (facultatif) :
 
 ```bash
-pip install venv
+pip install virtualenv
 py -m venv env
 env\Scripts\activate
 ```
@@ -28,6 +28,20 @@ USER=...
 PASSWORD=...
 HOST=...
 PORT=...
+```
+
+Initialiser la BDD :
+
+```bash
+cd backend
+py manage.py migrate
+```
+
+Créér un admin (facultatif) :
+
+```bash
+cd backend
+py manage.py createsuperuser
 ```
 
 ### <ins>Lancer le serveur :</ins>
