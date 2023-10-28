@@ -13,11 +13,26 @@ class LivraisonsView(APIView):
     
     def post(self, request):
         data = request.data
+
+        same = Livraison.objects.filter(date=data['date'], destination__lieu__startswith=data['destination'])
+        if same.exists():
+            data['destination'] = data['destination'] + ' #' + str(same.count()+1)
+
         destination, new_destination = Destination.objects.get_or_create(lieu=data['destination']) 
         if destination:
             data['destination'] = destination.__dict__
         else:
             data['destination'] = new_destination.__dict__
+
+        if 'preparateur' in data :
+            if data['preparateur'] == 'indefini':
+                del data['preparateur']
+            else :
+                preparateur, new_preparateur = Preparateur.objects.get_or_create(nom=data['preparateur'])
+                if preparateur:
+                    data['preparateur'] = preparateur.__dict__
+                else:
+                    data['preparateur'] = new_preparateur.__dict__
 
         serializer = LivraisonSerializer(data=request.data)
         if serializer.is_valid(raise_exception=True):
@@ -78,6 +93,13 @@ class UpdateDestinations(APIView):
                     new_destination.favorite = False
                     new_destination.save()
         return Response(status=status.HTTP_201_CREATED)
+    
+
+class PreparateursView(APIView):
+    def get(self, request):
+        preparateurs = Preparateur.objects.order_by('nom')
+        serializer = PreparateurSerializer(preparateurs, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
     
 
 class GetAll(APIView):

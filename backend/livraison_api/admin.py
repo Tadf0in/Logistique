@@ -3,12 +3,9 @@ from .models import *
 
 @admin.register(Livraison)
 class LivraisonAdmin(admin.ModelAdmin):
-    list_display = ('name', 'taille', 'status', 'ref')
+    list_display = ('ref', 'destination', 'date', 'status', 'taille', 'adr')
     search_fields = ('destination__lieu', 'ref')
-    list_filter = ('date', 'taille', 'status', 'destination__favorite')
-
-    def name(self, livraison):
-        return str(livraison)
+    list_filter = ('date', 'taille', 'status', 'destination__favorite', 'adr')
     
 
 @admin.register(Destination)
@@ -17,3 +14,9 @@ class DestinationAdmin(admin.ModelAdmin):
     list_filter = ('favorite',)
     list_editable = ('favorite',)
     search_fields = ('lieu',)
+
+
+@admin.register(Preparateur)
+class PreparateurAdmin(admin.ModelAdmin):
+    list_display = ('nom',)
+    search_fields = ('nom',)
