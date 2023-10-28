@@ -10,9 +10,9 @@ class LivraisonAdmin(admin.ModelAdmin):
 
 @admin.register(Destination)
 class DestinationAdmin(admin.ModelAdmin):
-    list_display = ('lieu', 'favorite', 'id')
+    list_display = ('lieu', 'id')
     list_filter = ('favorite',)
-    list_editable = ('favorite',)
+    filter_horizontal = ('favorite',)
     search_fields = ('lieu',)
 
 

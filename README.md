@@ -2,6 +2,19 @@
 
 ## Avancées
 
+* **28/10** &nbsp; *Favoris par semaine*
+
+    * Pas terminé pour l'instant
+
+* **27/10** &nbsp; *Détails sur la livraison*
+
+    * Panneau de détails avec nb de palettes, préparateur, commentaires
+    * 5 points demandés rajoutés
+
+* **24/10 -> 26/10**
+
+    *J'ai arrêté de noter mais je t'ai montré en partage d'écran*
+
 * **23/10** &nbsp; *Actualise les modifs en temps réel + supprime + modif*
 
     * forceRefresh
@@ -82,10 +95,25 @@
 | taille      | char     |                  |
 | status      | char     |                  |
 | ref         | char     |                  |
+| date        | Date     |                  |
+| finish      | bool     | default : False  |
+| hidden      | bool     | default : False  |
+| adr         | bool     | default : False  |
+| quai        | bool     | default : False  |
+| preparateur | int      | FK > Preparateur |
+| nb_palettes | int      | default : 0      |
+| commentaires| text     |                  |
 
 ||         **Destination**         ||
 |:---------|---------:|:-----------:|
 | **nom**  | **type** | **options** |
 | id       | int      | PK          |
 | lieu     | char     |             |
-| favorite | bool     |             |
+| favorite | bool     | def : False |
+
+
+||         **Preparateur**         ||
+|:---------|---------:|:-----------:|
+| **nom**  | **type** | **options** |
+| id       | int      | PK          |
+| nom      | char     |             |

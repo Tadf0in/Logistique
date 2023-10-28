@@ -1,5 +1,6 @@
 from rest_framework.views import APIView, Response, status
 from .serializers import *
+import datetime
 
 
 class LivraisonsView(APIView):
@@ -109,3 +110,24 @@ class GetAll(APIView):
             'livraisons' : LivraisonsView().get(request).data
         }, status=status.HTTP_200_OK)
         
+
+class SemaineView(APIView):
+    def post(self, request):
+        today = datetime.datetime.now()
+        monday = datetime.datetime.strptime(f"{today.year - 1}-W52" + '-1', '%G-W%V-%u')
+        
+        while monday.year <= today.year:
+            num = monday.isocalendar()[1]
+            friday = monday + datetime.timedelta(days=4)
+
+            if not Semaine.objects.filter(num=num, start=monday, end=friday).exists():
+                new_semaine = Semaine()
+                new_semaine.num = num
+                new_semaine.start = monday
+                new_semaine.end = friday
+                new_semaine.save()
+
+            monday += datetime.timedelta(days=7)
+
+        return Response(status=status.HTTP_201_CREATED)
+

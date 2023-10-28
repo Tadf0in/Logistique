@@ -1,8 +1,17 @@
 from django.db import models
 
+class Semaine(models.Model):
+    num = models.PositiveSmallIntegerField(verbose_name='Numéro')
+    start = models.DateField()
+    end = models.DateField()
+
+    def __str__(self) -> str:
+        return f'Semaine {self.num} - {self.start.year}'
+
+
 class Destination(models.Model):
     lieu = models.CharField(max_length=50)
-    favorite = models.BooleanField(verbose_name='Favoris', default=False)
+    favorite = models.ManyToManyField(Semaine)
 
     def __str__(self) -> str:
         return self.lieu
