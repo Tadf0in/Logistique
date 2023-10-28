@@ -2,16 +2,12 @@
 
 ## Avancées
 
-* **28/10** &nbsp; *Favoris par semaine*
-
-    * Pas terminé pour l'instant
-
-* **27/10** &nbsp; *Détails sur la livraison*
+* **28/10** &nbsp; *Détails sur la livraison*
 
     * Panneau de détails avec nb de palettes, préparateur, commentaires
-    * 5 points demandés rajoutés
+    * Points demandés rajoutés
 
-* **24/10 -> 26/10**
+* **24/10 -> 27/10**
 
     *J'ai arrêté de noter mais je t'ai montré en partage d'écran*
 
