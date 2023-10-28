@@ -1,5 +1,42 @@
 # <div align="center">Documentation</div>
 
+## Utilisation
+
+### <ins>Uniquement la 1ère fois :</ins>
+
+Environnement virtuel (Optionnel) :
+
+```bash
+pip install venv
+py -m venv env
+env\Scripts\activate
+```
+
+Installation des librairies python :
+
+```bash
+pip install -r requirements.txt
+```
+
+Créer un fichier *.env* à la racine du projet, et rentrer les informations de la base de donnée (à voir avec l'IT je pense) :
+
+```
+SECRET_KEY=...
+ENGINE='django.db.backends.postgresql'
+NAME=...
+USER=...
+PASSWORD=...
+HOST=...
+PORT=...
+```
+
+### <ins>Lancer le serveur :</ins>
+
+```bash
+cd backend
+py manage.py runserver --insecure
+```
+
 ## Avancées
 
 * **28/10** &nbsp; *Détails sur la livraison*
