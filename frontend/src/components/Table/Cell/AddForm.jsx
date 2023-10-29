@@ -13,8 +13,8 @@ export default function AddForm ({ editing, close, date, destination, data, list
         preparateur: data.preparateur ? data.preparateur.nom : 'indefini' 
         } : {
         destination: destination.lieu,
-        taille: 'FTL',
-        status: 'B',
+        taille: '',
+        status: '',
         ref: '',
         date: formatDate(date),
         adr: false
@@ -58,7 +58,7 @@ export default function AddForm ({ editing, close, date, destination, data, list
             <Input type='date' placeholder='Date' name='date' get={formData[['date']]} set={valueChange}/>
             <Select name='taille' get={formData[['taille']]} set={valueChange} options={['FTL', "20'", "40'", '3L/M', '6L/M', 'express', 'TNT']}/>
             <Select name='status' get={formData[['status']]} set={valueChange} options={['B', 'D', 'B+CMR']}/>
-            <Input type='text' placeholder='Ref' name='ref' get={formData[['ref']]} set={valueChange}/>
+            <Input type='text' placeholder='Ref' name='ref' required={false} get={formData[['ref']]} set={valueChange}/>
             <span className="adr-span">
                 <input type="checkbox" id='adr' name='adr' checked={formData['adr']} onChange={(e) => valueChange('adr', e.target.checked)}/>
                 <label htmlFor='adr'>ADR</label>

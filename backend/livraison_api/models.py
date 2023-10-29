@@ -17,9 +17,9 @@ class Preparateur(models.Model):
 
 class Livraison(models.Model):
     destination = models.ForeignKey(Destination, on_delete=models.CASCADE, null=True)
-    taille = models.CharField(max_length=15)
-    status = models.CharField(max_length=15)
-    ref = models.CharField(max_length=50)
+    taille = models.CharField(max_length=15, blank=True)
+    status = models.CharField(max_length=15, blank=True)
+    ref = models.CharField(max_length=50, blank=True)
     date = models.DateField()
     finish = models.BooleanField(verbose_name='Terminée', default=False)
     hidden = models.BooleanField(verbose_name='Cachée', default=False)
@@ -31,4 +31,4 @@ class Livraison(models.Model):
     commentaires = models.TextField(null=True, blank=True)
 
     def __str__(self) -> str:
-        return self.ref
+        return str(self.destination.lieu) + ' - ' + str(self.ref)
