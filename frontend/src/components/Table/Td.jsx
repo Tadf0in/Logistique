@@ -22,12 +22,12 @@ export default function Td ({ data, date, destination, listDestinations, forceRe
         { rempli > 0 ?
         <div className="td" style={{backgroundColor: data.quai ? '#dbffdb' : data.finish ? '#ffdbdb' : ''}} onClick={(e) => {if (!details && e.target === e.currentTarget) {setDetails(true)}}}>
             { !data.destination.favorite && <p>{data.destination.lieu}</p> }
-            <p>{data.taille}</p>
-            <p style={{color: (data.status[0] === 'B') ? "red" : (data.status[0] === 'D') ? "green" : "black"}}>
-                {data.status}
+            <p className={data.taille ? '' : 'indefini'}>{data.taille ? data.taille : 'Indéfini'}</p>
+            <p style={{color: (data.status[0] === 'B') ? "red" : (data.status[0] === 'D') ? "green" : ""}} className={data.status ? '' : 'indefini'}>
+                {data.status ? data.status : 'Indéfini'}
             </p>
             { data.adr && <img src={adr} alt='adr' className="picto"></img>}
-            <p>{data.ref}</p>
+            <p className={data.ref ? '' : 'indefini'}>{data.ref ? data.ref : 'Indéfini'}</p>
 
             <Edit data={data} forceRefresh={forceRefresh} adding={adding} setAdding={setAdding} setEditing={setEditing} />
 
