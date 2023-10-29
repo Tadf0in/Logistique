@@ -49,15 +49,14 @@ export default function AddForm ({ editing, close, date, destination, data, list
                 <select className='select' name="destination" value={formData['destination']} onChange={(e) => valueChange('destination', e.target.value)}>
                     { Object.values(listDestinations).map((d, i) => {
                         return <option value={d.lieu} key={i}>{d.lieu}</option>    
-                    }
-                    )}
+                    })}
                     <option value="">Autre</option>
                 </select>
                 :
                 <Input type='text' placeholder="Destination" name='destination' className='select' get={formData[['destination']]} set={valueChange}/>
             }
             <Input type='date' placeholder='Date' name='date' get={formData[['date']]} set={valueChange}/>
-            <Select name='taille' get={formData[['taille']]} set={valueChange} options={['FTL', '3L/M', '6L/M', 'express', 'TNT']}/>
+            <Select name='taille' get={formData[['taille']]} set={valueChange} options={['FTL', "20'", "40'", '3L/M', '6L/M', 'express', 'TNT']}/>
             <Select name='status' get={formData[['status']]} set={valueChange} options={['B', 'D', 'B+CMR']}/>
             <Input type='text' placeholder='Ref' name='ref' get={formData[['ref']]} set={valueChange}/>
             <span className="adr-span">
