@@ -14,7 +14,7 @@ class LivraisonsView(APIView):
     def post(self, request):
         data = request.data
 
-        same = Livraison.objects.filter(date=data['date'], destination__lieu__startswith=data['destination'])
+        same = Livraison.objects.filter(hidden=False, date=data['date'], destination__lieu__startswith=data['destination'])
         if same.exists():
             data['destination'] = data['destination'] + ' #' + str(same.count()+1)
 
@@ -25,7 +25,7 @@ class LivraisonsView(APIView):
             data['destination'] = new_destination.__dict__
 
         if 'preparateur' in data :
-            if data['preparateur'] is None or data['preparateur'] == 'indefini':
+            if data['preparateur'] is None or data['preparateur'] in ['', 'indefini']:
                 del data['preparateur']
             else :
                 preparateur, new_preparateur = Preparateur.objects.get_or_create(nom=data['preparateur'])

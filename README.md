@@ -1,5 +1,63 @@
 # <div align="center">Documentation</div>
 
+## Utilisation
+
+### <ins>Uniquement la 1ère fois :</ins>
+
+Environnement virtuel (facultatif) :
+
+```bash
+pip install virtualenv
+py -m venv env
+env\Scripts\activate
+```
+
+Installation des librairies python :
+
+```bash
+pip install -r requirements.txt
+```
+
+Créer un fichier `.env` à la racine du projet, et rentrer les informations de la base de donnée (à voir avec l'IT je pense) :
+
+```
+SECRET_KEY=...
+ENGINE='django.db.backends.postgresql'
+NAME=...
+USER=...
+PASSWORD=...
+HOST=...
+PORT=...
+```
+
+Initialiser la BDD :
+
+```bash
+cd backend
+py manage.py migrate
+```
+
+Créér un admin (facultatif) :
+
+```bash
+cd backend
+py manage.py createsuperuser
+```
+
+### <ins>Lancer le serveur :</ins>
+
+```bash
+cd backend
+py manage.py runserver --insecure
+```
+
+### <ins>Ajouter les destinations dans la BDD :</ins>
+
+1. Lister les destinations dans le fichier `backend\destinations.txt`
+2. Aller sur <ins>/api/livraisons/destinations/update</ins>
+3. Cliquer sur le bouton **POST**
+
+
 ## Avancées
 
 * **28/10** &nbsp; *Détails sur la livraison*
@@ -7,7 +65,7 @@
     * Panneau de détails avec nb de palettes, préparateur, commentaires
     * Points demandés rajoutés
 
-* **24/10 -> 27/10**
+* **24/10 - 27/10**
 
     *J'ai arrêté de noter mais je t'ai montré en partage d'écran*
 
