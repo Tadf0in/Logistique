@@ -38,21 +38,19 @@ export default function Details ({ data, setFalse, forceRefresh }) {
     const valueChange = (name, value) => {
         setFormData({...formData, [name]: value})
     }
-
-    const Info = ({name, type, children}) => <span className="detail">
-        <label htmlFor={name}>{children}</label>
-        { edit 
-            ? <input type={type} id={name} value={formData[name]} onChange={(e) => valueChange(name, e.target.value)}/>
-            : <p>{data[name]}</p>
-        }
-    </span>   
-
+    
     return <div className="details">
         <button className="close" onClick={() => setFalse()}>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>
         </button>
         
-        <Info name='nb_palettes' type='number'>Nombre de palettes :</Info>
+        <span className="detail">
+            <label htmlFor={'nb_palettes'}>Nombre de palettes :</label>
+            { edit 
+                ? <Input type='number' name='nb_palettes' get={formData['nb_palettes']} set={valueChange}/>
+                : <p>{data['nb_palettes']}</p>
+            }
+        </span>
         
         <span className="detail">
             <label name='preparateur' htmlFor='preparateur'>Préparateur :</label>
@@ -72,7 +70,13 @@ export default function Details ({ data, setFalse, forceRefresh }) {
             }
         </span>
 
-        <Info name='ref' type='text'>Ref :</Info>
+        <span className="detail">
+            <label htmlFor={'ref'}>Ref :</label>
+            { edit 
+                ? <Input type='text' name='ref' get={formData['ref']} set={valueChange}/>
+                : <p>{data['ref']}</p>
+            }
+        </span>
 
         <span className="comments-span">
             <label htmlFor='comments'>Commentaires :</label>
